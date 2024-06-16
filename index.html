@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Star Browser</title>
+
+</head>
+
+<body>
+  <div class="info-bar">
+    <input type="image" src="images/logos/logo.svg" alt="logo" class="info-bar-img info-bar-item" id="logoButton">
+    <input type="image" src="images/logos/logo.svg" alt="reload" class="info-bar-img info-bar-item" id="reloadButton">
+    <input type="text" placeholder="enter url or search with google" class="url-input info-bar-item" id="urlInput">
+    <input type="image" src="images/arrow_forward_1/arrow_forward.svg" alt="enter arrow" class="info-bar-img info-bar-item"
+      id="enterButton">
+  </div>
+  <webview src="pages/start.html" class="website-iframe" id="websiteIFrame"></webview>
+</body>
+<script>
+  const logoButton = document.getElementById("logoButton");
+  const reloadButton = document.getElementById("reloadButton");
+  const enterButton = document.getElementById("enterButton");
+  const websiteIFrame = document.getElementById("websiteIFrame");
+  const urlInput = document.getElementById("urlInput");
+
+  const topLevelDomains = [".com", ".io", ".nl", ".de", ".org", ".net", ".int", ".edu", ".eu", ".dev"];
+
+  reloadButton.onclick = e => {
+    websiteIFrame.src += '';
+  }
+
+  enterButton.onclick = f => {
+    const searchValue = urlInput.value;
+    let searchIsUrl = false;
+
+    for (let i = 0; i < topLevelDomains.length; i++) {
+      const element = topLevelDomains[i];
+      if (searchValue.includes(element)) {
+        searchIsUrl = true;
+        break;
+      }
+    }
+
+    if (searchIsUrl) {
+      if (searchValue.includes("https://") || searchValue.includes("http://"))
+        websiteIFrame.src = searchValue;
+      else
+        websiteIFrame.src = "https://" + searchValue;
+    }
+    else {
+      const newSearchValue = searchValue.replace(" ", "+");
+      websiteIFrame.src = "https://www.google.com/search?q=" + newSearchValue;
+    }
+  };
+
+  logoButton.onclick = e => {
+    websiteIFrame.src = "https://www.google.com/"
+    urlInput.value = websiteIFrame.src;
+  }; 
+</script>
+
+</html>

@@ -1,0 +1,133 @@
+body {
+  margin: 0px;
+  background-color: #2e2e2e;
+}
+
+.info-bar {
+  background-color: #1f1f1f;
+  height: 50px;
+  padding: 15px;
+  display: flex;
+  border-bottom: 2px solid #2e2e2e;
+}
+
+.info-bar-img {
+  object-fit: contain;
+  height: 40px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #2e2e2e;
+  border-radius: 10px;
+  background-color: #2e2e2e;
+}
+
+.info-bar-item {
+  margin: 0px 5px;
+}
+
+.url-input {
+  flex-grow: 1;
+  font-size: 20px;
+  background-color: #2e2e2e;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 15px;
+  color: rgb(175, 175, 175);
+}
+
+p {
+  font-family: helvetica;
+}
+
+.logo-button {
+  padding: 0px;
+  margin: 0px;
+  background-color: #00000000;
+  border: none;
+}
+
+.website-iframe {
+  width: 100%;
+  height: calc(100vh - 80px - 2px);
+  border: none;
+}
+
+.logo-img {
+  height: 256px;
+  width: 256px;
+  margin-top: 50px;
+}
+
+h1 {
+  font-family: helvetica;
+  color: white;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.title-div {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #1f1f1f;
+  border-radius: 0px 0px 45px 45px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.undertitle {
+  text-align: center;
+
+  font-family: helvetica;
+  color: white;
+  font-size: 25px;
+  font-weight: 100;
+  margin: 0px;
+}
+
+.get-now-button {
+  background-color: white;
+  color: #2e2e2e;
+  border: none;
+  border-radius: 20px;
+  padding: 15px 25px;
+  margin: 25px 0px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.info-card-div {
+  flex-grow: 1;
+  background-color: #1f1f1f;
+  border-radius: 45px;
+  padding: 25px 25px;
+  margin: 0px 10px;
+}
+
+.info-card-text {
+  color: white;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+.info-cards {
+  display: flex;
+  margin: 25px;
+}
+
+.info-card-title {
+  background-color: white;
+  color: #2e2e2e;
+  border: none;
+  border-radius: 20px;
+  padding: 15px 25px;
+  margin: 0px;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+}
