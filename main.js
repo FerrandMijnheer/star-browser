@@ -5,9 +5,9 @@ const iconPath = path.join(__dirname, "images", "logos", "256.png")
 
 app.whenReady().then(() => {
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1080,
     icon: iconPath,
-    height: 600,
+    height: 720,
     webPreferences: {
       webviewTag: true
     }
