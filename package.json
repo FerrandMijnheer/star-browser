@@ -1,7 +1,7 @@
 {
-  "name": "my-electron-app",
+  "name": "star-browser",
   "version": "1.0.0",
-  "description": "My first electron app",
+  "description": "A simple browser",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
