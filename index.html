@@ -11,7 +11,7 @@
 <body>
   <div class="info-bar">
     <input type="image" src="images/logos/logo.svg" alt="logo" class="info-bar-img info-bar-item" id="logoButton">
-    <input type="image" src="images/logos/logo.svg" alt="reload" class="info-bar-img info-bar-item" id="reloadButton">
+    <input type="image" src="images/refresh_24dp.svg" alt="reload" class="info-bar-img info-bar-item" id="reloadButton">
     <input type="text" placeholder="enter url or search with google" class="url-input info-bar-item" id="urlInput">
     <input type="image" src="images/arrow_forward_1/arrow_forward.svg" alt="enter arrow" class="info-bar-img info-bar-item"
       id="enterButton">
@@ -25,23 +25,27 @@
   const websiteIFrame = document.getElementById("websiteIFrame");
   const urlInput = document.getElementById("urlInput");
 
+  let pastUrl = [];
+
   const topLevelDomains = [".com", ".io", ".nl", ".de", ".org", ".net", ".int", ".edu", ".eu", ".dev"];
 
   reloadButton.onclick = e => {
     websiteIFrame.src += '';
-  }
+  };
 
-  enterButton.onclick = f => {
+  enterButton.onclick = e => {
     const searchValue = urlInput.value;
     let searchIsUrl = false;
+
+    pastUrl.push(searchValue);
 
     for (let i = 0; i < topLevelDomains.length; i++) {
       const element = topLevelDomains[i];
       if (searchValue.includes(element)) {
         searchIsUrl = true;
         break;
-      }
-    }
+      };
+    };
 
     if (searchIsUrl) {
       if (searchValue.includes("https://") || searchValue.includes("http://"))
@@ -52,11 +56,11 @@
     else {
       const newSearchValue = searchValue.replace(" ", "+");
       websiteIFrame.src = "https://www.google.com/search?q=" + newSearchValue;
-    }
+    };
   };
 
   logoButton.onclick = e => {
-    websiteIFrame.src = "https://www.google.com/"
+    websiteIFrame.src = "https://www.google.com/";
     urlInput.value = websiteIFrame.src;
   }; 
 </script>
