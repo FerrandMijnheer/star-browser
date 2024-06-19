@@ -14,9 +14,9 @@ app.whenReady().then(() => {
   })
 
   mainWindow.loadFile('index.html')
-})
+});
 
 app.on('window-all-closed', () => {
   app.quit()
-})
+});
 
