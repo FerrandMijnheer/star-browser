@@ -83,8 +83,6 @@
       const searchValue = urlInput.value;
       let searchIsUrl = false;
 
-      pastUrl.push(searchValue);
-
       for (let i = 0; i < topLevelDomains.length; i++) {
         const element = topLevelDomains[i];
         if (searchValue.includes(element)) {
