@@ -1,7 +1,7 @@
 :root {
   --main-bg-color: #1f1f1f;
   --main-accent-bg-color: #2e2e2e;
-  --main-accent-color: #6f6f6f;
+  --main-accent-color: rgb(175, 175, 175);
   --main-txt-color: rgb(255, 255, 255);
 }
 
@@ -68,7 +68,7 @@ body {
   border-radius: 10px;
   padding: 10px;
   padding-left: 15px;
-  color: rgb(175, 175, 175);
+  color: var(--main-accent-color);
 }
 
 p {
