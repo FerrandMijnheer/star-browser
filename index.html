@@ -1,102 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Star Browser</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-  <title>Star Browser</title>
+  <body>
+    <div class="info-bar">
+      <input
+        type="image"
+        src="images/logos/logo.svg"
+        alt="logo"
+        class="info-bar-img info-bar-item"
+        id="logoButton"
+      />
+      <input
+        type="image"
+        src="images/arrow_back_24dp.svg"
+        alt="undo"
+        class="info-bar-img-l info-bar-img info-bar-item-l"
+        id="undoButton"
+      />
+      <input
+        type="image"
+        src="images/refresh_24dp.svg"
+        alt="reload"
+        class="info-bar-img-m info-bar-img info-bar-item-m"
+        id="reloadButton"
+      />
+      <input
+        type="image"
+        src="images/arrow_forward_24dp.svg"
+        alt="redo"
+        class="info-bar-img-r info-bar-img info-bar-item-r"
+        id="redoButton"
+      />
+      <input
+        type="text"
+        placeholder="enter url or search with google"
+        class="url-input info-bar-item"
+        id="urlInput"
+      />
+      <input
+        type="image"
+        src="images/check_24dp.svg"
+        alt="enter check"
+        class="info-bar-img info-bar-item"
+        id="enterButton"
+      />
+    </div>
+    <webview src="pages/start.html" class="website-iframe" id="websiteIFrame">
+    </webview>
+  </body>
+  <script>
+    const logoButton = document.getElementById("logoButton");
+    const reloadButton = document.getElementById("reloadButton");
+    const enterButton = document.getElementById("enterButton");
+    const websiteIFrame = document.getElementById("websiteIFrame");
+    const urlInput = document.getElementById("urlInput");
 
-</head>
+    let pastUrl = [];
 
-<body>
-  <div class="info-bar">
-    <input 
-      type="image" 
-      src="images/logos/logo.svg" 
-      alt="logo" 
-      class="info-bar-img info-bar-item" 
-      id="logoButton">
-    <input 
-      type="image" 
-      src="images/arrow_back_24dp.svg" 
-      alt="undo" 
-      class="info-bar-img-l info-bar-img info-bar-item-l" 
-      id="undoButton">
-    <input 
-      type="image"
-      src="images/refresh_24dp.svg" 
-      alt="reload" 
-      class="info-bar-img- info-bar-img info-bar-item-m" 
-      id="reloadButton">
-    <input 
-      type="image" 
-      src="images/arrow_forward_24dp.svg" 
-      alt="redo" 
-      class="info-bar-img-r info-bar-img info-bar-item-r" 
-      id="redoButton">
-    <input 
-      type="text" 
-      placeholder="enter url or search with google" 
-      class="url-input info-bar-item" 
-      id="urlInput">
-    <input 
-      type="image" 
-      src="images/check_24dp.svg" 
-      alt="enter check" 
-      class="info-bar-img info-bar-item"
-      id="enterButton">
-  </div>
-  <webview 
-    src="pages/start.html" 
-    class="website-iframe" 
-    id="websiteIFrame">
-  </webview>
-</body>
-<script>
-  const logoButton = document.getElementById("logoButton");
-  const reloadButton = document.getElementById("reloadButton");
-  const enterButton = document.getElementById("enterButton");
-  const websiteIFrame = document.getElementById("websiteIFrame");
-  const urlInput = document.getElementById("urlInput");
+    const topLevelDomains = [
+      ".com",
+      ".io",
+      ".nl",
+      ".de",
+      ".org",
+      ".net",
+      ".int",
+      ".edu",
+      ".eu",
+      ".dev",
+    ];
 
-  let pastUrl = [];
-
-  const topLevelDomains = [".com", ".io", ".nl", ".de", ".org", ".net", ".int", ".edu", ".eu", ".dev"];
-
-  reloadButton.onclick = e => {
-    websiteIFrame.src += '';
-  };
-
-  enterButton.onclick = e => {
-    const searchValue = urlInput.value;
-    let searchIsUrl = false;
-
-    pastUrl.push(searchValue);
-
-    for (let i = 0; i < topLevelDomains.length; i++) {
-      const element = topLevelDomains[i];
-      if (searchValue.includes(element)) {
-        searchIsUrl = true;
-        break;
-      };
+    reloadButton.onclick = (e) => {
+      websiteIFrame.src += "";
     };
 
-    if (searchIsUrl) {
-      if (searchValue.includes("https://") || searchValue.includes("http://"))
-        websiteIFrame.src = searchValue;
-      else
-        websiteIFrame.src = "https://" + searchValue;
-    }
-    else {
-      const newSearchValue = searchValue.replace(" ", "+");
-      websiteIFrame.src = "https://www.google.com/search?q=" + newSearchValue;
+    enterButton.onclick = (e) => {
+      const searchValue = urlInput.value;
+      let searchIsUrl = false;
+
+      pastUrl.push(searchValue);
+
+      for (let i = 0; i < topLevelDomains.length; i++) {
+        const element = topLevelDomains[i];
+        if (searchValue.includes(element)) {
+          searchIsUrl = true;
+          break;
+        }
+      }
+
+      if (searchIsUrl) {
+        if (searchValue.includes("https://") || searchValue.includes("http://"))
+          websiteIFrame.src = searchValue;
+        else websiteIFrame.src = "https://" + searchValue;
+      } else {
+        const newSearchValue = searchValue.replace(" ", "+");
+        websiteIFrame.src = "https://www.google.com/search?q=" + newSearchValue;
+      }
     };
-  };
 
-  logoButton.onclick = e => {
-    websiteIFrame.src = "https://www.google.com/";
-    urlInput.value = websiteIFrame.src;
-  }; 
-</script>
-
+    logoButton.onclick = (e) => {
+      websiteIFrame.src = "https://www.google.com/";
+      urlInput.value = websiteIFrame.src;
+    };
+  </script>
 </html>
