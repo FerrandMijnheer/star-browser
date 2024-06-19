@@ -1,34 +1,69 @@
+:root {
+  --main-bg-color: #1f1f1f;
+  --main-accent-bg-color: #2e2e2e;
+  --main-accent-color: #6f6f6f;
+  --main-txt-color: rgb(255, 255, 255);
+}
+
 body {
   margin: 0px;
-  background-color: #2e2e2e;
+  background-color: var(--main-accent-bg-color);
 }
 
 .info-bar {
-  background-color: #1f1f1f;
+  background-color: var(--main-bg-color);
   height: 50px;
   padding: 15px;
   display: flex;
-  border-bottom: 2px solid #2e2e2e;
+  border-bottom: 2px solid var(--main-accent-bg-color);
 }
 
 .info-bar-img {
   object-fit: contain;
-  height: 40px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #2e2e2e;
+  height: 50px;
   border-radius: 10px;
-  background-color: #2e2e2e;
+  background-color: var(--main-accent-bg-color);
 }
 
 .info-bar-item {
   margin: 0px 5px;
 }
 
+.info-bar-item-l {
+  margin: 0px;
+  margin-left: 5px;
+}
+
+.info-bar-img-l {
+  border-radius: 10px 0px 0px 10px;
+  border-right: 1px solid var(--main-accent-color);
+}
+
+.info-bar-item-m {
+  margin: 0px;
+}
+
+.info-bar-img-m {
+  border-radius: 0px;
+  border-right: 1px solid var(--main-accent-color);
+  border-left: 1px var(--main-accent-color);
+}
+
+.info-bar-item-r {
+  margin: 0px;
+  margin-right: 0px;
+}
+
+.info-bar-img-r {
+  border-radius: 0px 10px 10px 0px;
+  border-left: 1px solid var(--main-accent-color);
+}
+
+
 .url-input {
   flex-grow: 1;
   font-size: 20px;
-  background-color: #2e2e2e;
+  background-color: var(--main-accent-bg-color);
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -91,8 +126,8 @@ h1 {
 }
 
 .get-now-button {
-  background-color: white;
-  color: #2e2e2e;
+  background-color: var(--main-txt-color);
+  color: var(--main-accent-bg-color);
   border: none;
   border-radius: 20px;
   padding: 15px 25px;
@@ -103,7 +138,7 @@ h1 {
 
 .info-card-div {
   flex-grow: 1;
-  background-color: #1f1f1f;
+  background-color: var(--main-bg-color);
   border-radius: 45px;
   padding: 25px 25px;
   margin: 0px 10px;
@@ -122,7 +157,7 @@ h1 {
 
 .info-card-title {
   background-color: white;
-  color: #2e2e2e;
+  color: var(--main-accent-bg-color);
   border: none;
   border-radius: 20px;
   padding: 15px 25px;
