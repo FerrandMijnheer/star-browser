@@ -46,12 +46,12 @@ body {
 .info-bar-img-m {
   border-radius: 0px;
   border-right: 1px solid var(--main-accent-color);
-  border-left: 1px var(--main-accent-color);
+  border-left: 1px solid var(--main-accent-color);
 }
 
 .info-bar-item-r {
   margin: 0px;
-  margin-right: 0px;
+  margin-right: 5px;
 }
 
 .info-bar-img-r {
