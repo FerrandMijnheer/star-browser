@@ -73,6 +73,16 @@
     const addButton = document.getElementById("addButton");
     const appTitle = document.getElementById("appTitle");
     const loaderDiv = document.getElementById("loaderDiv");
+    const undoButton = document.getElementById("undoButton");
+    const redoButton = document.getElementById("redoButton");
+
+    redoButton.onclick = () => {
+      websiteIFrame.goForward();
+    }
+
+    undoButton.onclick = () => {
+      websiteIFrame.goBack();
+    }
 
     addButton.onclick = (e) => {
       window.electronAPI.newWindow();
