@@ -1,6 +1,6 @@
 :root {
   --main-bg-color: #1f1f1f;
-  --main-accent-color3: #3d3d3d;
+  --main-accent-color3: #414040;
   --main-accent-color2: #2e2e2e;
   --main-accent-color: #afafaf;
   --main-txt-color: #e8eaed;
@@ -37,7 +37,7 @@ body {
 
 .info-bar-img-l {
   border-radius: 10px 0px 0px 10px;
-  border-right: 1px solid var(--main-accent-color);
+  border-right: 1px solid var(--main-accent-color3);
 }
 
 .info-bar-item-m {
@@ -46,8 +46,8 @@ body {
 
 .info-bar-img-m {
   border-radius: 0px;
-  border-right: 1px solid var(--main-accent-color);
-  border-left: 1px solid var(--main-accent-color);
+  border-right: 1px solid var(--main-accent-color3);
+  border-left: 1px solid var(--main-accent-color3);
 }
 
 .info-bar-item-r {
@@ -57,7 +57,7 @@ body {
 
 .info-bar-img-r {
   border-radius: 0px 10px 10px 0px;
-  border-left: 1px solid var(--main-accent-color);
+  border-left: 1px solid var(--main-accent-color3);
 }
 
 .url-input {
