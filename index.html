@@ -78,13 +78,13 @@
 
     redoButton.onclick = () => {
       websiteIFrame.goForward();
-    }
+    };
 
     undoButton.onclick = () => {
       websiteIFrame.goBack();
-    }
+    };
 
-    addButton.onclick = (e) => {
+    addButton.onclick = () => {
       window.electronAPI.newWindow();
     };
 
@@ -96,7 +96,7 @@
     websiteIFrame.addEventListener("did-start-loading", () => {
       appTitle.innerHTML = "Star browser - Loading...";
       loaderDiv.hidden = false;
-    })
+    });
 
     const topLevelDomains = [
       ".com",
@@ -111,11 +111,11 @@
       ".dev",
     ];
 
-    reloadButton.onclick = (e) => {
+    reloadButton.onclick = () => {
       websiteIFrame.reload();
     };
 
-    enterButton.onclick = (e) => {
+    enterButton.onclick = () => {
       const searchValue = urlInput.value;
       let searchIsUrl = false;
 
@@ -137,7 +137,7 @@
       }
     };
 
-    logoButton.onclick = (e) => {
+    logoButton.onclick = () => {
       websiteIFrame.src = "https://www.google.com/";
       urlInput.value = websiteIFrame.src;
     };
