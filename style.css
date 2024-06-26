@@ -225,22 +225,3 @@ h1 {
   0% { transform: rotate(540deg); }
   100% { transform: rotate(180deg); }
 }
-
-
-/*scrollbar*/
-::-webkit-scrollbar {
-  width: 5px;
-  padding: 0px 1px;
-  background: var(--main-bg-color);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--main-accent-color2);
-  border-radius: 2.5px;
-}
-
-::-webkit-scrollbar-button {
-  height: 5px;
-  background: var(--main-bg-color);
-  color:var(--main-accent-color2)
-}
