@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <title>Star Browser</title>
+    <title id="appTitle">Star Browser</title>
   </head>
 
   <body>
@@ -49,9 +49,20 @@
         class="info-bar-img info-bar-item"
         id="enterButton"
       />
+      <input
+        type="image"
+        src="images/add_24dp.svg"
+        alt="add button"
+        class="info-bar-img info-bar-item"
+        id="addButton"
+      />
     </div>
     <webview src="pages/start.html" class="website-iframe" id="websiteIFrame">
     </webview>
+    <div class="loader-div" id="loaderDiv">
+      <div class="loader1"></div>
+      <div class="loader2"></div>
+    </div>
   </body>
   <script>
     const logoButton = document.getElementById("logoButton");
@@ -59,8 +70,23 @@
     const enterButton = document.getElementById("enterButton");
     const websiteIFrame = document.getElementById("websiteIFrame");
     const urlInput = document.getElementById("urlInput");
+    const addButton = document.getElementById("addButton");
+    const appTitle = document.getElementById("appTitle");
+    const loaderDiv = document.getElementById("loaderDiv");
 
-    let pastUrl = [];
+    addButton.onclick = (e) => {
+      window.electronAPI.newWindow();
+    };
+
+    websiteIFrame.addEventListener("did-stop-loading", () => {
+      appTitle.innerHTML = "Star browser - " + websiteIFrame.src;
+      loaderDiv.hidden = true;
+    });
+
+    websiteIFrame.addEventListener("did-start-loading", () => {
+      appTitle.innerHTML = "Star browser - Loading...";
+      loaderDiv.hidden = false;
+    })
 
     const topLevelDomains = [
       ".com",
@@ -76,7 +102,7 @@
     ];
 
     reloadButton.onclick = (e) => {
-      websiteIFrame.src += "";
+      websiteIFrame.reload();
     };
 
     enterButton.onclick = (e) => {
