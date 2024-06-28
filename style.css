@@ -69,6 +69,7 @@ body {
   padding: 10px;
   padding-left: 15px;
   color: var(--main-accent-color);
+  text-overflow: ellipsis;
 }
 
 p {
@@ -172,7 +173,7 @@ h1 {
 
 .loader-div {
   position: absolute;
-  top: 0;
+  top: 82px;
   right: 0;
   left: 0;
   bottom: 0;
