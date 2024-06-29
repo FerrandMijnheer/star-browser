@@ -87,6 +87,7 @@ p {
   width: 100%;
   height: calc(100vh - 80px - 2px);
   border: none;
+  transition: 100ms;
 }
 
 .logo-img {
@@ -178,9 +179,11 @@ h1 {
   left: 0;
   bottom: 0;
   z-index: 1;
-  height: 100vh;
-  width: 100vw;
   background-color: #1f1f1fa2;
+}
+
+.blur {
+  filter: blur(10px);
 }
 
 .loader1 {

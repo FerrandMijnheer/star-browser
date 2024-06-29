@@ -48,13 +48,7 @@
         placeholder="enter url or search with google"
         class="url-input info-bar-item"
         id="urlInput"
-      />
-      <input
-        type="image"
-        src="images/check_24dp.svg"
-        alt="enter check"
-        class="info-bar-img info-bar-item"
-        id="enterButton"
+        onkeydown="onKeyDown(event)"
       />
     </div>
     <webview src="pages/start.html" class="website-iframe" id="websiteIFrame">
@@ -67,7 +61,6 @@
   <script>
     const logoButton = document.getElementById("logoButton");
     const reloadButton = document.getElementById("reloadButton");
-    const enterButton = document.getElementById("enterButton");
     const websiteIFrame = document.getElementById("websiteIFrame");
     const urlInput = document.getElementById("urlInput");
     const addButton = document.getElementById("addButton");
@@ -75,6 +68,36 @@
     const loaderDiv = document.getElementById("loaderDiv");
     const undoButton = document.getElementById("undoButton");
     const redoButton = document.getElementById("redoButton");
+
+    function onKeyDown(event) {
+      const key = event.key;
+
+      if (key == "Enter") {
+        const searchValue = urlInput.value;
+        let searchIsUrl = false;
+
+        for (let i = 0; i < topLevelDomains.length; i++) {
+          const element = topLevelDomains[i];
+          if (searchValue.includes(element)) {
+            searchIsUrl = true;
+            break;
+          }
+        }
+
+        if (searchIsUrl) {
+          if (
+            searchValue.includes("https://") ||
+            searchValue.includes("http://")
+          )
+            websiteIFrame.src = searchValue;
+          else websiteIFrame.src = "https://" + searchValue;
+        } else {
+          const newSearchValue = searchValue.replace(" ", "+");
+          websiteIFrame.src =
+            "https://www.google.com/search?q=" + newSearchValue;
+        }
+      }
+    }
 
     redoButton.onclick = () => {
       websiteIFrame.goForward();
@@ -85,15 +108,18 @@
     };
 
     addButton.onclick = () => {
-      window.electronAPI.newWindow();
+      window.windowAPI.newWindow();
     };
 
     websiteIFrame.addEventListener("did-stop-loading", () => {
-      appTitle.innerHTML = "Star browser - " + websiteIFrame.src;
+      websiteIFrame.classList.remove("blur");
+      appTitle.innerHTML = "Star browser - " + websiteIFrame.getTitle();
+      urlInput.value = websiteIFrame.src;
       loaderDiv.hidden = true;
     });
 
     websiteIFrame.addEventListener("did-start-loading", () => {
+      websiteIFrame.classList.add("blur");
       appTitle.innerHTML = "Star browser - Loading...";
       loaderDiv.hidden = false;
     });
@@ -115,31 +141,14 @@
       websiteIFrame.reload();
     };
 
-    enterButton.onclick = () => {
-      const searchValue = urlInput.value;
-      let searchIsUrl = false;
-
-      for (let i = 0; i < topLevelDomains.length; i++) {
-        const element = topLevelDomains[i];
-        if (searchValue.includes(element)) {
-          searchIsUrl = true;
-          break;
-        }
-      }
-
-      if (searchIsUrl) {
-        if (searchValue.includes("https://") || searchValue.includes("http://"))
-          websiteIFrame.src = searchValue;
-        else websiteIFrame.src = "https://" + searchValue;
-      } else {
-        const newSearchValue = searchValue.replace(" ", "+");
-        websiteIFrame.src = "https://www.google.com/search?q=" + newSearchValue;
-      }
-    };
-
     logoButton.onclick = () => {
       websiteIFrame.src = "https://www.google.com/";
       urlInput.value = websiteIFrame.src;
     };
+
+    window.windowAPI.setWindowURL((url) => {
+      console.log(`data delivered to renderer.js:  and ${url}`);
+      websiteIFrame.src = url;
+    });
   </script>
 </html>
