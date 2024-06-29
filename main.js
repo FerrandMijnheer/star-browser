@@ -2,10 +2,7 @@ const {
   app,
   BrowserWindow,
   ipcMain,
-  MenuItem,
-  Menu,
 } = require("electron/main");
-const { debug } = require("node:console");
 
 const path = require("node:path");
 const iconPath = path.join(__dirname, "images", "logos", "256.png");
