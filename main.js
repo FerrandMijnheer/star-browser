@@ -1,8 +1,4 @@
-const {
-  app,
-  BrowserWindow,
-  ipcMain,
-} = require("electron/main");
+const { app, BrowserWindow, ipcMain } = require("electron/main");
 
 const path = require("node:path");
 const iconPath = path.join(__dirname, "images", "logos", "256.png");
@@ -51,8 +47,12 @@ app.on("web-contents-created", (e, wc) => {
       action: "allow",
       overrideBrowserWindowOptions: true,
       outlivesOpener: true,
-      createWindow: () => {
-        const win = createWindow(true, null, details.url);
+      createWindow: (options) => {
+        options.webPreferences = {
+          webviewTag: true,
+          preload: path.join(__dirname, "preload.js"),
+        };
+        const win = createWindow(true, options, details.url);
         return win.webContents;
       },
     };
