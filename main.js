@@ -52,6 +52,7 @@ app.on("web-contents-created", (e, wc) => {
           webviewTag: true,
           preload: path.join(__dirname, "preload.js"),
         };
+        options.icon = iconPath;
         const win = createWindow(true, options, details.url);
         return win.webContents;
       },
