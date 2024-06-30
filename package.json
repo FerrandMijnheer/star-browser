@@ -1,9 +1,9 @@
 {
   "name": "star-browser",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "A simple browser",
   "main": "main.js",
-  "icon": "./images/logos/256.png",
+  "icon": "./images/logos/128.png",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
