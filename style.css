@@ -26,7 +26,12 @@ body {
   background-color: var(--main-accent-color2);
 }
 
+.info-bar-item:hover {
+  background-color: var(--main-accent-color3);
+}
+
 .info-bar-item {
+  transition: 0.2s;
   margin: 0px 5px;
 }
 
@@ -127,7 +132,7 @@ h1 {
   margin: 0px;
 }
 
-.get-now-button {
+.start-button {
   background-color: var(--main-txt-color);
   color: var(--main-accent-color2);
   border: none;
@@ -136,6 +141,12 @@ h1 {
   margin: 25px 0px;
   font-size: 30px;
   font-weight: 500;
+  transition: 0.2s;
+}
+
+.start-button:hover {
+  box-shadow: 0px 5px 15px #000000;
+  cursor: pointer;
 }
 
 .info-card-div {
