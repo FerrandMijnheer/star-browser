@@ -76,6 +76,9 @@
         const searchValue = urlInput.value;
         let searchIsUrl = false;
 
+        if (searchValue.includes("https://") || searchValue.includes("http://"))
+          searchIsUrl = true;
+
         for (let i = 0; i < topLevelDomains.length; i++) {
           const element = topLevelDomains[i];
           if (searchValue.includes(element)) {
@@ -149,7 +152,6 @@
       ".actor",
       ".ads",
       ".aero",
-
     ];
 
     reloadButton.onclick = () => {
