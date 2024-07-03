@@ -76,7 +76,7 @@ app.on("window-all-closed", () => {
 app.whenReady().then(() => {
   const win = createWindow();
 
-  globalShortcut.register("ContolOrCommand+A", () => {
+  globalShortcut.register("CommandOrControl+a", () => {
     win.webContents.selectAll();
   });
 });
