@@ -77,6 +77,6 @@ app.whenReady().then(() => {
   const win = createWindow();
 
   globalShortcut.register("CommandOrControl+a", () => {
-    win.webContents.selectAll();
+    if (win.isFocused()) win.webContents.selectAll();
   });
 });
