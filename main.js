@@ -1,5 +1,10 @@
-const { app, BrowserWindow, ipcMain } = require("electron/main");
-if (require('electron-squirrel-startup')) app.quit();
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  globalShortcut,
+} = require("electron/main");
+if (require("electron-squirrel-startup")) app.quit();
 
 const path = require("node:path");
 const iconPath = path.join(__dirname, "images", "logos", "256.png");
@@ -23,6 +28,8 @@ function createWindow(
   } else {
     mainWindow = new BrowserWindow(options);
   }
+
+  mainWindow.setAutoHideMenuBar(true);
 
   if (loadDefaultFile != false && browserURL != null) {
     mainWindow.loadFile("index.html").then(() => {
@@ -68,4 +75,8 @@ app.on("window-all-closed", () => {
 
 app.whenReady().then(() => {
   const win = createWindow();
+
+  globalShortcut.register("ContolOrCommand+A", () => {
+    win.webContents.selectAll();
+  });
 });
