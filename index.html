@@ -164,8 +164,13 @@
     };
 
     window.windowAPI.setWindowURL((url) => {
-      console.log(`data delivered to renderer.js:  and ${url}`);
       websiteIFrame.src = url;
     });
+
+    window.windowAPI.reloadPage(reloadPage());
+
+    function reloadPage() {
+      websiteIFrame.src += "";
+    }
   </script>
 </html>

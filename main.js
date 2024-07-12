@@ -76,7 +76,7 @@ app.on("window-all-closed", () => {
 app.whenReady().then(() => {
   const win = createWindow();
 
-  // globalShortcut.register("CommandOrControl+a", () => {
-  //   if (win.isFocused()) win.webContents.selectAll();
-  // });
+  globalShortcut.register("CommandOrControl+F5", () => {
+    if (win.isFocused()) win.webContents.send("reloadPage");
+  });
 });
