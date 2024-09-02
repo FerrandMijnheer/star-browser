@@ -85,7 +85,6 @@ const topLevelDomains = [
   ".accountants",
   ".active",
   ".actor",
-  ".ads",
   ".aero",
 ];
 
