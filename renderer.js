@@ -14,6 +14,7 @@ function onKeyDown(event) {
   if (key == "Enter") {
     const searchValue = urlInput.value;
     let searchIsUrl = false;
+    let searchIsFile = false;
 
     if (searchValue.includes("https://") || searchValue.includes("http://"))
       searchIsUrl = true;
@@ -26,6 +27,14 @@ function onKeyDown(event) {
       }
     }
 
+    for (let i = 0; i < fileTopLevelDomains.length; i++) {
+      const element = fileTopLevelDomains[i];
+      if (searchValue.includes(element)) {
+        searchIsFile = true;
+        break;
+      }
+    }
+
     if (searchIsUrl) {
       if (searchValue.includes("https://") || searchValue.includes("http://"))
         websiteIFrame.src = searchValue;
@@ -33,6 +42,12 @@ function onKeyDown(event) {
     } else {
       const newSearchValue = searchValue.replace(" ", "+");
       websiteIFrame.src = "https://www.google.com/search?q=" + newSearchValue;
+    }
+
+    if (searchIsFile) {
+      if (searchValue.includes("file://"))
+        websiteIFrame.src = searchValue;
+      else websiteIFrame.src = "file://" + searchValue;
     }
   }
 }
@@ -87,6 +102,10 @@ const topLevelDomains = [
   ".actor",
   ".aero",
 ];
+
+const fileTopLevelDomains = [
+  ".html"
+]
 
 reloadButton.onclick = () => {
   websiteIFrame.reload();
