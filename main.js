@@ -1,3 +1,4 @@
+const { nativeTheme } = require("electron");
 const {
   app,
   BrowserWindow,
@@ -36,6 +37,8 @@ function createWindow(
       mainWindow.webContents.send("setWindowURL", browserURL);
     });
   } else if (loadDefaultFile != false) mainWindow.loadFile("index.html");
+
+  nativeTheme.themeSource = "dark";
 
   return mainWindow;
 }
