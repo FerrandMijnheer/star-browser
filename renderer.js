@@ -69,12 +69,25 @@ websiteIFrame.addEventListener("did-stop-loading", () => {
   appTitle.innerHTML = "Star browser - " + websiteIFrame.getTitle();
   urlInput.value = websiteIFrame.src;
   loaderDiv.hidden = true;
+
+  reloadButton.style.opacity = "100%"
+
+  if (websiteIFrame.canGoBack()) undoButton.style.opacity = "100%"
+  else undoButton.style.opacity = "50%"
+
+  if (websiteIFrame.canGoForward()) redoButton.style.opacity = "100%"
+  else redoButton.style.opacity = "50%"
+
 });
 
 websiteIFrame.addEventListener("did-start-loading", () => {
   websiteIFrame.classList.add("blur");
   appTitle.innerHTML = "Star browser - Loading...";
   loaderDiv.hidden = false;
+
+  redoButton.style.opacity = "50%"
+  undoButton.style.opacity = "50%"
+  reloadButton.style.opacity = "50%"
 });
 
 const topLevelDomains = [
