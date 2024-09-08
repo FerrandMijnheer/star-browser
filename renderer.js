@@ -7,6 +7,32 @@ const appTitle = document.getElementById("appTitle");
 const loaderDiv = document.getElementById("loaderDiv");
 const undoButton = document.getElementById("undoButton");
 const redoButton = document.getElementById("redoButton");
+const menuButton = document.getElementById("menuButton");
+const menuBar = document.getElementById("menuBar");
+
+menuButton.onmouseenter = openMenu;
+menuButton.onmouseleave = closeMenu;
+
+menuBar.onmouseenter = openMenu;
+menuBar.onmouseleave = closeMenu;
+
+function openMenu() {
+  urlInput.classList.add("disabled");
+  menuBar.classList.remove("disabled");
+  menuBar.childNodes.forEach((element) => {
+    if (element.classList == undefined) return;
+    element.classList.remove("disabled")
+  });
+}
+
+function closeMenu() {
+  menuBar.classList.add("disabled");
+  urlInput.classList.remove("disabled");
+  menuBar.childNodes.forEach((element) => {
+    if (element.classList == undefined) return;
+    element.classList.add("disabled")
+  });
+}
 
 function onKeyDown(event) {
   const key = event.key;
@@ -45,8 +71,7 @@ function onKeyDown(event) {
     }
 
     if (searchIsFile) {
-      if (searchValue.includes("file://"))
-        websiteIFrame.src = searchValue;
+      if (searchValue.includes("file://")) websiteIFrame.src = searchValue;
       else websiteIFrame.src = "file://" + searchValue;
     }
   }
@@ -70,14 +95,13 @@ websiteIFrame.addEventListener("did-stop-loading", () => {
   urlInput.value = websiteIFrame.src;
   loaderDiv.hidden = true;
 
-  reloadButton.style.opacity = "100%"
+  reloadButton.style.opacity = "100%";
 
-  if (websiteIFrame.canGoBack()) undoButton.style.opacity = "100%"
-  else undoButton.style.opacity = "50%"
+  if (websiteIFrame.canGoBack()) undoButton.style.opacity = "100%";
+  else undoButton.style.opacity = "50%";
 
-  if (websiteIFrame.canGoForward()) redoButton.style.opacity = "100%"
-  else redoButton.style.opacity = "50%"
-
+  if (websiteIFrame.canGoForward()) redoButton.style.opacity = "100%";
+  else redoButton.style.opacity = "50%";
 });
 
 websiteIFrame.addEventListener("did-start-loading", () => {
@@ -85,9 +109,9 @@ websiteIFrame.addEventListener("did-start-loading", () => {
   appTitle.innerHTML = "Star browser - Loading...";
   loaderDiv.hidden = false;
 
-  redoButton.style.opacity = "50%"
-  undoButton.style.opacity = "50%"
-  reloadButton.style.opacity = "50%"
+  redoButton.style.opacity = "50%";
+  undoButton.style.opacity = "50%";
+  reloadButton.style.opacity = "50%";
 });
 
 const topLevelDomains = [
@@ -116,9 +140,7 @@ const topLevelDomains = [
   ".aero",
 ];
 
-const fileTopLevelDomains = [
-  ".html"
-]
+const fileTopLevelDomains = [".html"];
 
 reloadButton.onclick = () => {
   websiteIFrame.reload();

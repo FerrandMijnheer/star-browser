@@ -17,13 +17,6 @@
       />
       <input
         type="image"
-        src="images/add_24dp.svg"
-        alt="add button"
-        class="info-bar-img info-bar-item"
-        id="addButton"
-      />
-      <input
-        type="image"
         src="images/arrow_back_24dp.svg"
         alt="undo"
         class="l info-bar-img info-bar-item"
@@ -49,6 +42,22 @@
         class="long-input info-bar-item"
         id="urlInput"
         onkeydown="onKeyDown(event)"
+      />
+      <div class="long-input info-bar-item disabled menu-bar" id="menuBar">
+        <input
+          type="image"
+          src="images/add_24dp.svg"
+          alt="add button"
+          class="menu-bar-img menu-bar-item disabled"
+          id="addButton"
+        />
+      </div>
+      <input
+        type="image"
+        src="images/more_horiz_24dp.svg"
+        alt="logo"
+        class="info-bar-img info-bar-item disabled"
+        id="menuButton"
       />
     </div>
     <webview src="pages/start.html" class="website-iframe" id="websiteIFrame">
