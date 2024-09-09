@@ -11,6 +11,37 @@ body {
   background-color: var(--main-accent-color2);
 }
 
+.option-div {
+  margin: 50px;
+  border-radius: 50px;
+  background-color: var(--main-bg-color);
+  width: calc(100% - 100px);
+  align-content: center;
+  text-align: center;
+}
+
+.option-title-div {
+  background-color: var(--main-txt-color);
+  margin-top: 25px;
+  padding: 10px 25px;
+  display: inline-block;
+  border-radius: 35px;
+}
+
+.option-title {
+  color: var(--main-bg-color);
+  margin: 0px;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: Helvetica;
+}
+
+.option-text {
+  color: var(--main-txt-color);
+  display: inline-block;
+  margin-top: 5px;
+}
+
 .info-bar {
   background-color: var(--main-bg-color);
   height: 50px;
@@ -100,11 +131,11 @@ body {
   opacity: 100%;
   padding: 0px;
   margin: 0px;
-  transition: all 0.2s 0.2s, position 0.2s 0.2s, background-color 0.2s 0.0s;
+  transition: all 0.2s 0.2s, width 0.2s 0.4s, background-color 0.2s 0.0s;
 }
 
 .menu-bar-item.disabled {
-  transition-delay: 0s;
+  transition-delay: 50ms;
   width: 1px;
   opacity: 0%;
 }
@@ -151,6 +182,13 @@ h1 {
   color: var(--main-txt-color);
   font-size: 50px;
   font-weight: 600;
+}
+
+h2 {
+  font-family: helvetica;
+  color: var(--main-txt-color);
+  font-size: 30px;
+  font-weight: 400;
 }
 
 .title-div {

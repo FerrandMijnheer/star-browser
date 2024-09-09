@@ -9,6 +9,11 @@ const undoButton = document.getElementById("undoButton");
 const redoButton = document.getElementById("redoButton");
 const menuButton = document.getElementById("menuButton");
 const menuBar = document.getElementById("menuBar");
+const settingsButton = document.getElementById("settingsButton");
+
+settingsButton.onclick = () => {
+  websiteIFrame.src = "pages/settings.html"
+}
 
 menuButton.onmouseenter = openMenu;
 menuButton.onmouseleave = closeMenu;
@@ -147,7 +152,7 @@ reloadButton.onclick = () => {
 };
 
 logoButton.onclick = () => {
-  websiteIFrame.src = "https://www.google.com/";
+  websiteIFrame.src = "./pages/start.html";
   urlInput.value = websiteIFrame.src;
 };
 
